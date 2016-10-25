@@ -24,7 +24,7 @@ class RepoVizzClient(object):
 
     def start_auth(self, async=False):
         self.request_data = None
-        self.start_server(async)
+        # self.start_server(async)
         return self.get_auth_url()
 
 

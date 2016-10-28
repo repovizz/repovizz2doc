@@ -2,7 +2,7 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 from requests_oauthlib import OAuth2Session
-from socket import socket, AF_INET, SOCK_STREAM
+import socket
 from threading import Thread
 from time import sleep
 
@@ -21,6 +21,7 @@ class RepoVizzClient(object):
         self.request_data = None
         self.oauthclient = None
         self.authenticated = True
+        self.__server_running = False
 
     def start_auth(self, async=False):
         self.request_data = None
@@ -33,20 +34,31 @@ class RepoVizzClient(object):
             self._mini_server_main()
         else:
             if not self.miniserver:
+                self._server_running = True
                 self.miniserver = Thread(target=self._mini_server_main,args=(async,))
                 self.miniserver.daemon = True
                 self.miniserver.start()
 
-    def _mini_server_main(self, async=True):
-        s = socket(AF_INET, SOCK_STREAM)
+    def stop_server(self):
+        self._server_running = False
+
+    def _mini_server_main(self, async):
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        if async:
+            s.settimeout(0.1)
         s.bind(('127.0.0.1', SCRIPT_PORT))
         s.listen(1)
         response = 'HTTP/1.0 200 OK\nConnection: close\nContent-Length: 10\nContent-Type: text/html\n\nThank you.'
-        while True:
-            (conn, addr) = s.accept()
-            self.request_data = conn.recv(1024)
-            conn.send(response)
-            conn.close()
+        while self._server_running:
+            try:
+                (conn, addr) = s.accept()
+                conn.settimeout(0.1)
+                self.request_data = conn.recv(1024)
+                conn.send(response)
+                conn.close()
+            except socket.timeout:
+                pass
             if not async:
                 break
         s.close()
@@ -62,6 +74,7 @@ class RepoVizzClient(object):
     def finish_auth(self):
         while not self.request_data:
             sleep(0.1)
+        self.stop_server()
         url_auth_with_token = 'http://'+self.request_data.split()[4]+self.request_data.split()[1]
         token_url = self.repovizz_url + "/oauth/token"
         self.oauthclient.fetch_token(

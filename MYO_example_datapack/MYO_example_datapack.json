@@ -38,7 +38,7 @@
 					"type": "0746bb48-9b92-4cd3-8d9e-3e1de13269eb",
 					"name": "EMG",
 					"text": "8-channel EMG data from the MYO armband",
-					"link": "emg.csv"
+					"link": "emg.json"
 				}
 			]
 		},
@@ -52,21 +52,21 @@
 					"type": "ae13fb70-fa1e-47d8-9cd6-00cef4fe21cc",
 					"name": "Accelerometer",
 					"text": "3-dimensional (XYZ) acceleration data",
-					"link": "accelerometer.csv"
+					"link": "accelerometer.json"
 				},
 				{
 					"class": "data",
 					"type": "35524338-dec5-40ca-a099-1fff42fb5460",
 					"name": "Gyroscope",
 					"text": "3-dimensional (XYZ) gyroscope data",
-					"link": "gyroscope.csv"
+					"link": "gyroscope.json"
 				},
 				{
 					"class": "data",
 					"type": "d4445fc6-0af0-42e0-979e-74a62b70b2ed",
 					"name": "Orientation",
 					"text": "3-dimensional (yaw, pitch, roll) orientation calculated from quaternion data",
-					"link": "orientation.csv"
+					"link": "orientation.json"
 				}
 			]
 		}

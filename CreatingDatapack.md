@@ -111,7 +111,7 @@ The structure from the example datapack can be seen below:
 Container nodes, as the name suggests, contain other nodes! They can be used to give structure to your datapack, like the way in which muscle activity (EMG) and movement (IMU) data have been placed in two different container nodes in the example above. Each container node stores some metadata about itself through the *name* and *text* properties, while the children nodes are placed inside the node's *children* array property.
 
 ### Data nodes
-Data nodes hold links to data files along with some metadata information about the data itself. Besides some standard properties such as *name*, *text* and *link* (which specifies the name of the file associated with the node), data nodes may additionally conform to a specific **datatype**: a description of the type of data to be uploaded.
+Data nodes hold links to data files along with some metadata information about the data itself. Besides some standard properties such as *name*, *text* and *link* (which specifies the name of the file associated with the node), users may additionally provide a specific **datatype**: a description of the type of data to be uploaded.
 
 A repovizz2 datatype can belong in one of the two following categories:
 

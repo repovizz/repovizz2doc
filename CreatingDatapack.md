@@ -35,67 +35,68 @@ orientation.json | 3-axis orientation data
 The video and audio files are in standard H.264 MP4 and wave format, while the sensor data are stored inside json arrays. We'll talk more about the file formats that repovizz2 uses in a little bit; for the time being let's take a look at the datapack JSON document:
 
 	{
-	    "info": {
-		"keywords": [
-		    "MYO", "audio", "video", "accelerometer", "gyroscope"
-		],
-		"description": "Short datapack of MYO data coupled with video and audio.",
-		"name": "MYO_various",
-		"author": "panpap"
-	    },
-	    "children": [{
-		"class": "data",
-		"name": "Video",
-		"text": "Handheld camera",
-		"link": "video.mp4",
-		"mime": "video/mp4; charset=binary"
-	    }, {
-		"class": "data",
-		"type": "48e3b5d2-c34c-459c-9a2d-0756c20d80de",
-		"name": "Audio",
-		"text": "Camera microphone",
-		"link": "audio.wav",
-		"mime": "audio/x-wav; charset=binary"
-	    }, {
-		"class": "container",
-		"name": "EMG",
-		"text": "",
+		"info": {
+			"keywords": [
+				"MYO", "audio", "video", "accelerometer", "gyroscope"
+			],
+			"description": "Short datapack of MYO data coupled with video and audio.",
+			"name": "MYO_various",
+			"author": "panpap"
+		},
 		"children": [{
-		    "class": "data",
-		    "type": "0746bb48-9b92-4cd3-8d9e-3e1de13269eb",
-		    "name": "EMG",
-		    "text": "8-channel EMG data from the MYO armband",
-		    "link": "emg.json",
-			"mime": "text/plain; charset=us-ascii"
-		}]
-	    }, {
-		"class": "container",
-		"name": "IMU",
-		"text": "Inertial Measurement Unit (IMU) data from the MYO armband",
-		"children": [{
-		    "class": "data",
-		    "type": "ae13fb70-fa1e-47d8-9cd6-00cef4fe21cc",
-		    "name": "Accelerometer",
-		    "text": "3-dimensional (XYZ) acceleration data",
-		    "link": "accelerometer.json",
-			"mime": "text/plain; charset=us-ascii"
+			"class": "data",
+			"name": "Video",
+			"text": "Handheld camera",
+			"link": "video.mp4",
+			"mime": "video/mp4; charset=binary"
 		}, {
-		    "class": "data",
-		    "type": "35524338-dec5-40ca-a099-1fff42fb5460",
-		    "name": "Gyroscope",
-		    "text": "3-dimensional (XYZ) gyroscope data",
-		    "link": "gyroscope.json",
-			"mime": "text/plain; charset=us-ascii"
+			"class": "data",
+			"type": "48e3b5d2-c34c-459c-9a2d-0756c20d80de",
+			"name": "Audio",
+			"text": "Camera microphone",
+			"link": "audio.wav",
+			"mime": "audio/x-wav; charset=binary"
 		}, {
-		    "class": "data",
-		    "type": "d4445fc6-0af0-42e0-979e-74a62b70b2ed",
-		    "name": "Orientation",
-		    "text": "3-dimensional (yaw, pitch, roll) orientation calculated from quaternion data",
-		    "link": "orientation.json",
-			"mime": "text/plain; charset=us-ascii"
+			"class": "container",
+			"name": "EMG",
+			"text": "",
+			"children": [{
+				"class": "data",
+				"type": "0746bb48-9b92-4cd3-8d9e-3e1de13269eb",
+				"name": "EMG",
+				"text": "8-channel EMG data from the MYO armband",
+				"link": "emg.json",
+				"mime": "text/plain; charset=us-ascii"
+			}]
+		}, {
+			"class": "container",
+			"name": "IMU",
+			"text": "Inertial Measurement Unit (IMU) data from the MYO armband",
+			"children": [{
+				"class": "data",
+				"type": "ae13fb70-fa1e-47d8-9cd6-00cef4fe21cc",
+				"name": "Accelerometer",
+				"text": "3-dimensional (XYZ) acceleration data",
+				"link": "accelerometer.json",
+				"mime": "text/plain; charset=us-ascii"
+			}, {
+				"class": "data",
+				"type": "35524338-dec5-40ca-a099-1fff42fb5460",
+				"name": "Gyroscope",
+				"text": "3-dimensional (XYZ) gyroscope data",
+				"link": "gyroscope.json",
+				"mime": "text/plain; charset=us-ascii"
+			}, {
+				"class": "data",
+				"type": "d4445fc6-0af0-42e0-979e-74a62b70b2ed",
+				"name": "Orientation",
+				"text": "3-dimensional (yaw, pitch, roll) orientation calculated from quaternion data",
+				"link": "orientation.json",
+				"mime": "text/plain; charset=us-ascii"
+			}]
 		}]
-	    }]
 	}
+
 As you can see, the document contains two top-level objects:
 
 * An *"info"* object which holds metadata about the datapack (name, author, description, keywords)

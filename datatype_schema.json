@@ -34,7 +34,7 @@
 			"uniqueItems": true
 		},
 		"datatype": {
-			"description": "The datatype specification. One of [lattice, sparse, other]",
+			"description": "The datatype specification. One of [lattice, sparse]",
 			"type": "object",
 			"oneOf": [
 				{
@@ -49,13 +49,6 @@
 						"sparse": {"$ref": "#/definitions/sparse"}
 					},
 					"required": ["sparse"],
-					"additionalProperties": false
-				}, 
-				{
-					"properties": {
-						"other": {"$ref": "#/definitions/other"}
-					},
-					"required": ["other"],
 					"additionalProperties": false
 				}
 			]
@@ -265,22 +258,6 @@
 			"required": [
 				"dimensions",
 				"format"
-			],
-			"additionalProperties": false
-		},
-		"other": {
-			"type": "object",
-			"properties": {
-				"MIME_type": {
-					"type": "string"
-				},
-				"file_extension": {
-					"type": "string"
-				}
-			},
-			"required": [
-				"MIME_type",
-				"file_extension"
 			],
 			"additionalProperties": false
 		}

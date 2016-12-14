@@ -4,7 +4,7 @@ Multimodal data recordings in repovizz2 are represented as *datapacks*, a collec
 
 Each datapack consists of the following:
 
-* a datapack JSON document that adheres to the [repovizz2 datapack JSON schema](#datapack_schema)
+* a datapack JSON document that adheres to the [repovizz2 datapack JSON schema](https://raw.githubusercontent.com/repovizz/repovizz2doc/master/datapack_schema.json)
 * a list of files to be uploaded
 
 In order to upload a repovizz datapack, the user needs to provide all of the above and follow the guide in [Uploading a datapack](https://github.com/chaosct/repovizz2doc/blob/master/Upload.ipynb).
@@ -125,10 +125,4 @@ A repovizz2 datatype can belong in one of the three following categories:
 
 For the time being, repovizz2 supports a limited set of pre-defined *lattice* and *sparse* datatypes (examples of which can be seen [here](https://github.com/slowmountain/repovizz2doc/tree/master/example_datatypes)), expressed as a JSON document. You can find a detailed documentation of the datatype JSON schema [here](http://lbovet.github.io/docson/index.html#https://raw.githubusercontent.com/slowmountain/repovizz2doc/master/datatype_schema.json). We are currently working on a datatype service where users can upload their own datatype specification; until then, you can request and/or submit your custom datatype definitions by contacting us at <a href='m&#97;i&#108;&#116;&#111;&#58;re&#112;o&#118;i%7Az%3&#50;&#64;u&#112;&#102;&#46;e%&#54;4&#37;75'>&#114;&#101;povizz&#50;&#64;&#117;&#112;f&#46;&#101;du</a> .
 
-In order to verify that the datapack JSON you have generated is valid, you can use the datapack schema found here. A detailed documentation of that schema can be found [here](http://lbovet.github.io/docson/index.html#https://raw.githubusercontent.com/slowmountain/repovizz2doc/master/datatype_schema.json)
-
-TODOS:
-
-- Document the schema by adding descriptions for every item
-- Fix the datapack schema so that docson renders it correctly
-
+In order to verify that the datapack JSON you have generated is valid, you can use the datapack schema found [here](https://raw.githubusercontent.com/repovizz/repovizz2doc/master/datapack_schema.json). A detailed documentation of that schema can be found [here](http://lbovet.github.io/docson/index.html#https://raw.githubusercontent.com/slowmountain/repovizz2doc/master/datatype_schema.json).

@@ -1,0 +1,288 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "repovizz/datatype",
+	"description": "JSON schema for repovizz datatype documents",
+	"type": "object",
+	"properties": {
+		"datatypeID": {
+			"description": "A UUID that gets automatically generated when the datatype document is uploaded",
+			"$ref": "#/definitions/uuid"
+		},
+		"name": {
+			"description": "The name of the datatype",
+			"type": "string"
+		},
+		"parent": {
+			"description": "The UUID of the datatype's parent, if applicable",
+			"$ref": "#/definitions/uuid"
+		},
+		"owner": {
+			"description": "Repovizz2 user that has authored the datatype document",
+			"type": "string"
+		},
+		"description": {
+			"description": "A textual description of the datatype",
+			"type": "string"
+		},
+		"extra": {
+			"type": "object"
+		},
+		"tags": {
+			"description": "Tags to facilitate datatype search",
+			"type": "array",
+			"items": {"type": "string"},
+			"uniqueItems": true
+		},
+		"datatype": {
+			"description": "The datatype specification. One of [lattice, sparse, other]",
+			"type": "object",
+			"oneOf": [
+				{
+					"properties": {
+						"lattice": {"$ref": "#/definitions/lattice"}
+					},
+					"required": ["lattice"],
+					"additionalProperties": false
+				},
+				{
+					"properties": {
+						"sparse": {"$ref": "#/definitions/sparse"}
+					},
+					"required": ["sparse"],
+					"additionalProperties": false
+				}, 
+				{
+					"properties": {
+						"other": {"$ref": "#/definitions/other"}
+					},
+					"required": ["other"],
+					"additionalProperties": false
+				}
+			]
+		}
+	},
+	"required": [
+		"datatypeID",
+		"name",
+		"owner",
+		"description",
+		"tags",
+		"datatype"
+	],
+	"additionalProperties": false,
+	"definitions": {
+		"uuid": {
+			"description": "Universally unique identifier (UUID)",
+			"type": "string",
+			"pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+		},
+		"lattice": {
+			"description": "LATTICE datatypes describe continuous (fixed samplerate) data.",
+			"type": "object",
+			"properties": {
+				"primary_dimensions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"units": {
+								"type": "string"
+							},
+							"resolution": {
+								"type": "number"
+							},
+							"description": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"label",
+							"units",
+							"resolution",
+							"description"
+						],
+						"additionalProperties": false
+					}
+				},
+				"secondary_dimensions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"units": {
+								"type": "string"
+							},
+							"type": {
+								"type": "string",
+								"enum": [
+									"boolean",
+									"integer",
+									"float"
+								]
+							},
+							"description": {
+								"type": "string"
+							},
+							"range": {
+								"type": "object",
+								"properties": {
+									"min_val": {
+										"type": "string"
+									},
+									"max_val": {
+										"type": "string"
+									}
+								}
+							}
+						},
+						"required": [
+							"label",
+							"units",
+							"type",
+							"description"
+						],
+						"additionalProperties": false
+					}
+				},
+				"channels": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"description": {
+								"type": "string"
+							},
+							"label": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"description",
+							"label"
+						],
+						"additionalProperties": false
+					}
+				}
+			},
+			"required": [
+				"primary_dimensions",
+				"secondary_dimensions",
+				"channels"
+			],
+			"additionalProperties": false
+		},
+		"sparse": {
+			"description": "SPARSE datatypes describe sparsely/non-uniformly sampled data.",
+			"type": "object",
+			"properties": {
+				"dimensions": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"label": {
+								"type": "string"
+							},
+							"units": {
+								"type": "string"
+							},
+							"description": {
+								"type": "string"
+							}
+						},
+						"required": [
+							"label",
+							"units",
+							"description"
+						],
+						"additionalProperties": false
+					}
+				},
+				"format": {
+					"description": "TODO",
+					"type": "object",
+					"properties": {
+						"primary_dimensions": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"label": {
+										"type": "string"
+									},
+									"primaryDimension": {
+										"type": "number"
+									},
+									"description": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"label",
+									"primaryDimension",
+									"description"
+								],
+								"additionalProperties": false
+							}
+						},
+						"secondary_dimensions": {
+							"type": "array",
+							"items": {
+								"type": "object",
+								"properties": {
+									"label": {
+										"type": "string"
+									},
+									"type": {
+										"type": "string"
+									},
+									"description": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"label",
+									"type",
+									"description"
+								],
+								"additionalProperties": false
+							}
+						}
+					},
+					"required": [
+						"primary_dimensions",
+						"secondary_dimensions"
+					],
+					"additionalProperties": false
+				}
+			},
+			"required": [
+				"dimensions",
+				"format"
+			],
+			"additionalProperties": false
+		},
+		"other": {
+			"type": "object",
+			"properties": {
+				"MIME_type": {
+					"type": "string"
+				},
+				"file_extension": {
+					"type": "string"
+				}
+			},
+			"required": [
+				"MIME_type",
+				"file_extension"
+			],
+			"additionalProperties": false
+		}
+	}
+}

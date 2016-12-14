@@ -1,0 +1,115 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+
+    "title": "repovizz2/datapack",
+    "description": "Authoritative JSON schema for the repovizz2 datapack structure.",
+
+    "type": "object",
+    "properties": {
+        "info": {
+            "description": "Placeholder for generic information relative to the whole datapack.",
+            "type": "object",
+            "properties": {
+                "keywords": {
+                    "description": "List of keywords identifying the datapack, for easy search and discovery.",
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "uniqueItems": true
+                },
+                "description": {
+                    "title": "Datapack Description",
+                    "type": "string"
+                },
+                "id": {
+                    "title": "Datapack ID",
+                    "$ref": "#/definitions/uuid"
+                },
+                "name": {
+                    "title": "Datapack Name",
+                    "type": "string"
+                },
+                "author": {
+                    "title": "Datapack Author",
+                    "type": "string"
+                }
+            },
+            "required": ["name", "author", "description", "keywords"]
+        },
+        "children": { "$ref": "#/definitions/nodeArray" }
+    },
+    "required": ["info", "children"],
+
+
+    "definitions": {
+
+        "uuid": {
+            "type": "string",
+            "pattern": "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+        },
+
+        "node": {
+            "type": "object",
+            "properties": {
+                "class": {
+                    "type": "string",
+                    "enum": ["container", "data", "metadata"]
+                },
+                "name": { "type": "string" },
+                "text": { "type": "string" },
+                "id": { "$ref": "#/definitions/uuid" }
+            },
+            "required": ["class", "name", "text"]
+        },
+
+        "containerNode": {
+            "title": "Container Node",
+            "description": "Node that holds other nodes and serves as an organizational tool.",
+            "allOf": [
+                { "$ref": "#/definitions/node" },
+                {
+                    "properties": {
+                        "class": {
+                            "type": "string",
+                            "pattern": "container"
+                        },
+                        "children": { "$ref": "#/definitions/nodeArray" }
+                    },
+                    "required": ["children"]
+                }
+            ]
+        },
+
+        "dataNode": {
+            "title": "Data Node",
+            "description": "Node that holds a data pointer",
+            "allOf": [
+                { "$ref": "#/definitions/node" },
+                {
+                    "properties": {
+                        "class": {
+                            "type": "string",
+                            "pattern": "data"
+                        },
+                        "type": { "$ref": "#/definitions/uuid" },
+                        "meta": { "type": "object" },
+                        "link": { "type": "string" }
+                    },
+                    "required": ["type", "link"]
+                }
+            ]
+        },
+
+        "nodeArray": {
+            "title": "Node Array",
+            "description": "List of nodes, usually held within a Container Node.",
+            "type": "array",
+            "items": {
+                "oneOf": [
+                    { "$ref": "#/definitions/containerNode" },
+                    { "$ref": "#/definitions/dataNode" }
+                ]
+            }
+        }
+
+    }
+}

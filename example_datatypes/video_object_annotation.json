@@ -1,0 +1,69 @@
+{
+    "datatypeID": "c7e86871-373d-43ce-ae5e-786dc597ae05",
+    "name": "Object detection (rectangle)",
+    "owner": "ppapiotis",
+    "description": "Annotations of objects on top of a video in the form of rectangular boxes",
+    "extra": {},
+    "tags": ["object detection", "annotation"],
+    "datatype": {
+        "sparse": {
+            "dimensions": 
+            [
+                {
+                    "label": "time", 
+                    "units": "seconds",
+                    "description": ""  
+                },
+                {
+                    "label": "X", 
+                    "units": "pixels",
+                    "description": ""  
+                },
+                {
+                    "label": "Y", 
+                    "units": "pixels",
+                    "description": ""  
+                }
+            ],
+            "format":
+            {
+                "primary_dimensions":
+                [
+                    {
+                        "label": "Time",
+                        "primaryDimension": 1,
+                        "description": ""   
+                    },
+                    {
+                        "label": "startX",
+                        "primaryDimension": 2,
+                        "description": ""   
+                    },
+                    {
+                        "label": "startY",
+                        "primaryDimension": 3,
+                        "description": ""   
+                    },
+                    {
+                        "label": "endX",
+                        "primaryDimension": 2,
+                        "description": ""   
+                    },
+                    {
+                        "label": "endY",
+                        "primaryDimension": 3,
+                        "description": ""   
+                    }
+                ],
+                "secondary_dimensions":
+                [
+                    {
+                        "label": "Object name",
+                        "type": "String",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "datatypeID": "68cd3fb2-6f76-4790-b432-c9c49ebaffee",
+    "name": "drum note annotations",
+    "owner": "ppapiotis",
+    "description": "Drum notes as events with a duration in time",
+    "extra": {},
+    "tags": ["drums", "onset", "offset", "annotation"],
+    "datatype": {
+        "sparse": {
+            "dimensions": [{
+                "label": "time",
+                "units": "seconds",
+                "description": "time"
+            }],
+            "format":
+            {
+                "primary_dimensions":
+                [
+                    {
+                        "label": "onset time",
+                        "primaryDimension": 1,
+                        "description": "The time at which the note begins"   
+                    },
+                    {
+                        "label": "offset time",
+                        "primaryDimension": 1,
+                        "description": "The time at which a note ends"   
+                    }
+                ],
+                "secondary_dimensions":
+                [
+                    {
+                        "label": "offset type",
+                        "type": "String",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    }
+}
+

@@ -94,7 +94,7 @@
                         "meta": { "type": "object" },
                         "link": { "type": "string" }
                     },
-                    "required": ["type", "link"]
+                    "required": ["link"]
                 }
             ]
         },

@@ -52,7 +52,7 @@
             "properties": {
                 "class": {
                     "type": "string",
-                    "enum": ["container", "data", "metadata"]
+                    "enum": ["container", "data"]
                 },
                 "name": { "type": "string" },
                 "text": { "type": "string" },

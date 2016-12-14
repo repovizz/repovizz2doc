@@ -111,16 +111,14 @@ The structure from the example datapack can be seen below:
 Container nodes, as the name suggests, contain other nodes! They can be used to give structure to your datapack, like the way in which muscle activity (EMG) and movement (IMU) data have been placed in two different container nodes in the example above. Each container node stores some metadata about itself through the *name* and *text* properties, while the children nodes are placed inside the node's *children* array property.
 
 ### Data nodes
-Data nodes hold links to data files along with some metadata information about the data itself. Besides some standard properties such as *name*, *text* and *link* (which specifies the name of the file associated with the node), each data node must conform to a specific **datatype**: a description of the type of data to be uploaded.
+Data nodes hold links to data files along with some metadata information about the data itself. Besides some standard properties such as *name*, *text* and *link* (which specifies the name of the file associated with the node), data nodes may additionally conform to a specific **datatype**: a description of the type of data to be uploaded.
 
-A repovizz2 datatype can belong in one of the three following categories:
+A repovizz2 datatype can belong in one of the two following categories:
 
 1. *lattice*, "continuous" data that has a fixed sampling rate and is structured as an n-dimensional array.
   * examples: 3-axis accelerometer data, 5.1 audio recording, 3DOF motion capture data
 2. *sparse*, data that does not have a fixed sampling rate but rather each data point is accompanied by a reference point (e.g. a timestamp)
   * examples: textual annotations along time
-3. *other*, data that is hosted on repovizz2 but not parsed by it
-  * examples: .pdf files, code, etc.
 
 For the time being, repovizz2 supports a limited set of pre-defined *lattice* and *sparse* datatypes (examples of which can be seen [here](https://github.com/slowmountain/repovizz2doc/tree/master/example_datatypes)), expressed as a JSON document. You can find a detailed documentation of the datatype JSON schema [here](http://lbovet.github.io/docson/index.html#https://raw.githubusercontent.com/slowmountain/repovizz2doc/master/datatype_schema.json). We are currently working on a datatype service where users can upload their own datatype specification; until then, you can request and/or submit your custom datatype definitions by contacting us at <a href='m&#97;i&#108;&#116;&#111;&#58;re&#112;o&#118;i%7Az%3&#50;&#64;u&#112;&#102;&#46;e%&#54;4&#37;75'>&#114;&#101;povizz&#50;&#64;&#117;&#112;f&#46;&#101;du</a> .
 

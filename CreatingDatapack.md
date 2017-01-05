@@ -51,7 +51,6 @@ The video and audio files are in standard H.264 MP4 and wave format, while the s
 			"mime": "video/mp4; charset=binary"
 		}, {
 			"class": "data",
-			"type": "48e3b5d2-c34c-459c-9a2d-0756c20d80de",
 			"name": "Audio",
 			"text": "Camera microphone",
 			"link": "audio.wav",
@@ -62,7 +61,6 @@ The video and audio files are in standard H.264 MP4 and wave format, while the s
 			"text": "",
 			"children": [{
 				"class": "data",
-				"type": "0746bb48-9b92-4cd3-8d9e-3e1de13269eb",
 				"name": "EMG",
 				"text": "8-channel EMG data from the MYO armband",
 				"link": "emg.json",
@@ -74,21 +72,18 @@ The video and audio files are in standard H.264 MP4 and wave format, while the s
 			"text": "Inertial Measurement Unit (IMU) data from the MYO armband",
 			"children": [{
 				"class": "data",
-				"type": "ae13fb70-fa1e-47d8-9cd6-00cef4fe21cc",
 				"name": "Accelerometer",
 				"text": "3-dimensional (XYZ) acceleration data",
 				"link": "accelerometer.json",
 				"mime": "text/plain; charset=us-ascii"
 			}, {
 				"class": "data",
-				"type": "35524338-dec5-40ca-a099-1fff42fb5460",
 				"name": "Gyroscope",
 				"text": "3-dimensional (XYZ) gyroscope data",
 				"link": "gyroscope.json",
 				"mime": "text/plain; charset=us-ascii"
 			}, {
 				"class": "data",
-				"type": "d4445fc6-0af0-42e0-979e-74a62b70b2ed",
 				"name": "Orientation",
 				"text": "3-dimensional (yaw, pitch, roll) orientation calculated from quaternion data",
 				"link": "orientation.json",
@@ -111,15 +106,7 @@ The structure from the example datapack can be seen below:
 Container nodes, as the name suggests, contain other nodes! They can be used to give structure to your datapack, like the way in which muscle activity (EMG) and movement (IMU) data have been placed in two different container nodes in the example above. Each container node stores some metadata about itself through the *name* and *text* properties, while the children nodes are placed inside the node's *children* array property.
 
 ### Data nodes
-Data nodes hold links to data files along with some metadata information about the data itself. Besides some standard properties such as *name*, *text* and *link* (which specifies the name of the file associated with the node), users may additionally provide a specific **datatype**: a description of the type of data to be uploaded.
+Data nodes hold links to data files along with some metadata information about the data itself, such as *name*, *text* and *link* (which specifies the name of the file associated with the node). 
 
-A repovizz2 datatype can belong in one of the two following categories:
-
-1. *lattice*, "continuous" data that has a fixed sampling rate and is structured as an n-dimensional array.
-  * examples: 3-axis accelerometer data, 5.1 audio recording, 3DOF motion capture data
-2. *sparse*, data that does not have a fixed sampling rate but rather each data point is accompanied by a reference point (e.g. a timestamp)
-  * examples: textual annotations along time
-
-For the time being, repovizz2 supports a limited set of pre-defined *lattice* and *sparse* datatypes (examples of which can be seen [here](https://github.com/slowmountain/repovizz2doc/tree/master/example_datatypes)), expressed as a JSON document. You can find a detailed documentation of the datatype JSON schema [here](http://lbovet.github.io/docson/index.html#https://raw.githubusercontent.com/slowmountain/repovizz2doc/master/datatype_schema.json). We are currently working on a datatype service where users can upload their own datatype specification; until then, you can request and/or submit your custom datatype definitions by contacting us at <a href='m&#97;i&#108;&#116;&#111;&#58;re&#112;o&#118;i%7Az%3&#50;&#64;u&#112;&#102;&#46;e%&#54;4&#37;75'>&#114;&#101;povizz&#50;&#64;&#117;&#112;f&#46;&#101;du</a> .
-
+## Verifying the datapack JSON
 In order to verify that the datapack JSON you have generated is valid, you can use the datapack schema found [here](https://raw.githubusercontent.com/repovizz/repovizz2doc/master/datapack_schema.json). A detailed documentation of that schema can be found [here](http://lbovet.github.io/docson/index.html#https://raw.githubusercontent.com/repovizz/repovizz2doc/master/datatype_schema.json).

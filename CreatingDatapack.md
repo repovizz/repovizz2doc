@@ -7,7 +7,7 @@ Each datapack consists of the following:
 * a datapack JSON document that adheres to the [repovizz2 datapack JSON schema](https://raw.githubusercontent.com/repovizz/repovizz2doc/master/datapack_schema.json)
 * a list of files to be uploaded
 
-In order to upload a repovizz datapack, the user needs to provide all of the above and follow the guide in [Uploading a datapack](https://github.com/chaosct/repovizz2doc/blob/master/Upload.ipynb).
+In order to upload a repovizz datapack, the user needs to provide all of the above and follow the guide in [Uploading, Retrieving, Editing datapacks](https://github.com/repovizz/repovizz2doc/blob/master/Presentation.ipynb).
 
 In the rest of this guide, we will walk through the process of creating a datapack JSON document, and preparing the files to be uploaded.
 
@@ -17,7 +17,7 @@ We'll use an example datapack that includes the datapack JSON document along wit
 
 ### Example datapack
 
-This example datapack contains a multimodal recording carried out using [Thalmic Labs' MYO](https://www.myo.com/), accompanied video from a handheld camera. The following data files are present inside the datapack:
+This example datapack contains a multimodal recording carried out using [Thalmic Labs' MYO](https://www.myo.com/), together with video from a handheld camera. The following data files are present inside the datapack:
 
 <center>
 

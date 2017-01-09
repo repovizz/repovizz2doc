@@ -17,14 +17,13 @@ We'll use an example datapack that includes the datapack JSON document along wit
 
 ### Example datapack
 
-This example datapack contains a multimodal recording carried out using [Thalmic Labs' MYO](https://www.myo.com/), accompanied by audio and video from a handheld video camera. The following data files are present inside the datapack:
+This example datapack contains a multimodal recording carried out using [Thalmic Labs' MYO](https://www.myo.com/), accompanied video from a handheld camera. The following data files are present inside the datapack:
 
 <center>
 
 Filename | Description
 ---------|------------
 video.mp4 | video recording from a handheld camera
-audio.wav | audio recording from the camera's microphone
 emg.json | 8-channel muscle activity (EMG) data 
 accelerometer.json | 3-axis accelerometer data
 gyroscope.json | 3-axis gyroscope data 
@@ -32,12 +31,12 @@ orientation.json | 3-axis orientation data
 
 </center>
 
-The video and audio files are in standard H.264 MP4 and wave format, while the sensor data are stored inside json arrays. We'll talk more about the file formats that repovizz2 uses in a little bit; for the time being let's take a look at the datapack JSON document:
+The video file is in standard H.264 MP4 format, while the sensor data are stored inside json arrays. Let's take a look at the corresponding datapack JSON document:
 
 	{
 		"info": {
 			"keywords": [
-				"MYO", "audio", "video", "accelerometer", "gyroscope"
+				"MYO", "video", "accelerometer", "gyroscope"
 			],
 			"description": "Short datapack of MYO data coupled with video and audio.",
 			"name": "MYO_various",
@@ -49,12 +48,6 @@ The video and audio files are in standard H.264 MP4 and wave format, while the s
 			"text": "Handheld camera",
 			"link": "video.mp4",
 			"mime": "video/mp4; charset=binary"
-		}, {
-			"class": "data",
-			"name": "Audio",
-			"text": "Camera microphone",
-			"link": "audio.wav",
-			"mime": "audio/x-wav; charset=binary"
 		}, {
 			"class": "container",
 			"name": "EMG",

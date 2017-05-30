@@ -8,7 +8,7 @@ from time import sleep
 
 SCRIPT_PORT = 50009
 
-REPOVIZZ_URL = "http://repovizz2.upf.edu"
+REPOVIZZ_URL = "https://repovizz2.upf.edu"
 SCRIPT_URL = "http://localhost:{}".format(SCRIPT_PORT)
 
 

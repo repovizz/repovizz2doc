@@ -7,8 +7,8 @@ Here are the currently available repovizz2 API calls:
 * **/api/v1.0/datapacks/{id}/content/{id}** [`GET`](#getdatapackcontent) [`POST`](#postdatapackcontent)
 <br><br><br><br>
 <a name="getuser"></a>
-### Get user information
 ----
+### Get user information
   Returns json data about the user making the request.
 
 * **URL**
@@ -61,10 +61,9 @@ None
         }
     });
   ```
-
+----
 <a name="postdatapack"></a>
 ### Upload new datapack
-----
   Uploads a new datapack. This API call is used to upload only the JSON structure of the datapack, not the contents of data nodes (i.e. files) inside the datapack structure. The JSON structure must adhere to the [datapack json schema](datapack_schema.json).
 
 * **URL**
@@ -134,10 +133,10 @@ None
     }
   });
   ```
-  
+
+----
 <a name="getdatapack"></a>
 ### Retrieve datapack
-----
   Downloads an existing datapack (but not the files inside its data nodes).
 
 * **URL**
@@ -190,9 +189,10 @@ None
       }
     });
   ```
+
+----
 <a name="repostdatapack"></a>
 ### Edit datapack
-----
   Edits a datapack by replacing its structure.
 
 * **URL**
@@ -250,10 +250,10 @@ None
     }
   });
   ```
-  
+
+----
 <a name="getalldatapackcontent"></a>
 ### Retrieve all `data` nodes from a datapack
-----
 
 * **URL**
   `/api/v1.0/datapacks/datapack_id/content`
@@ -314,9 +314,10 @@ None
       }
     });
   ```
+  
+----
 <a name="getdatapackcontent"></a>
 ### Retrieve file from datapack
-----
   Downloads a file from a `data` node inside a datapack.
 
 * **URL**
@@ -363,9 +364,10 @@ None
       }
     });
     ```
+    
+----
 <a name="postdatapackcontent"></a>
 ### Upload file inside datapack
-----
   Uploads a file into a `data` node inside a datapack. This API call also serves when you wish to replace a file.
 
 * **URL**

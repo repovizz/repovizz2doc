@@ -10,7 +10,7 @@ You can start with doing the tutorial on this very repository! The tutorial is s
 * [API tutorial](Presentation.ipynb)
 
 If python is not your language, or you are simply looking for the list of API calls, you can find some basic documentation here:
-* [API documentation](API documentation.md)
+* [API documentation](APIDocumentation.md)
 
 ## I have a problem/suggestion/complaint! How can I contact you?
 Send us an email at <a href='m&#97;i&#108;&#116;&#111;&#58;re&#112;o&#118;i%7Az%3&#50;&#64;u&#112;&#102;&#46;e%&#54;4&#37;75'>&#114;&#101;povizz&#50;&#64;&#117;&#112;f&#46;&#101;du</a>.
